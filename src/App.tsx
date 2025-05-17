@@ -6,6 +6,7 @@ import TaskList from "./components/TaskList";
 import Header from "./layouts/Header";
 import "./styles.css";
 import useTodoStore from "./store/useTodoStore";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);

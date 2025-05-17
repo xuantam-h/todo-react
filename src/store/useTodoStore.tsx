@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { v4 as uuid } from 'uuid';
 
 interface TodoState {
   toDo: {
@@ -28,7 +29,7 @@ const useTodoStore = create<TodoState>((set) => ({
       toDo: [
         ...state.toDo,
         {
-          id: 7,
+          id: uuid(),
           name: todoName,
           priority: priority,
           isCompleted: false,

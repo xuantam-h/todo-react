@@ -10,8 +10,19 @@ const AddForm = () => {
   // Retrieve addTodo from Zustand store (useTodoStore)
   const addTodo = useTodoStore((state) => state.addTodo);
 
+  // Check if the input fields are empty before submitting the form
+  const checkFields = () => {
+    if(title.trim() === ""){
+      alert("Empty field !");
+    }else{
+      addTodo(title, selectedPriority);
+    }
+  }
+
   // Reset the input fields after submitting the form
   const clearFields = () => {
+    const inputField = document.getElementById("input-name") as HTMLInputElement;
+    if (inputField) inputField.value = "";
     setTitle("");
     setSelectedPriority("Basse");
   };
@@ -45,7 +56,7 @@ const AddForm = () => {
         </div>
         <button
           onClick={() => {
-            addTodo(title, selectedPriority);
+            checkFields();
             clearFields();
           }}
           className="d-flex btn-primary"
