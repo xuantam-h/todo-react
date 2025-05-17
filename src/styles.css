@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&family=Open+Sans&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: hsl(57, 92%, 85%);
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cal Sans", sans-serif;
+}
+h1 {
+  font-size: 3rem;
+  line-height: 1;
+}
+.App {
+  text-align: center;
+}
+.container {
+  max-width: 64em;
+  margin-inline: auto;
+}
+.d-flex {
+  display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.gap-1 {
+  gap: 1rem;
+}
+.todo-cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.input-text,
+select {
+  background-color: #eee;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-right: -1rem;
+  font-family: "Cal Sans", sans-serif;
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+}
+input::placeholder {
+  color: lightgray;
+}
+.input-label {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  color: #000;
+}
+.input-wrapper {
+  margin-block: 2rem;
+}
+.todo-btn {
+  display: flex;
+  gap: 1rem;
+}
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+.todo-item {
+  font-family: "Cal Sans", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  border-bottom: 1px solid#faf99f;
+  text-align: left;
+  transition: 250ms background ease-out;
+}
+.todo-item:hover {
+  background-color: hsl(57, 92%, 83%);
+}
+.todo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+}
+button {
+  font-family: "Cal Sans", sans-serif;
+  padding: 0.6rem;
+  background-color: #fff;
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+  border: none;
+  border-radius: 0.5rem;
+  transition: 300ms transform ease-out;
+  cursor: pointer;
+}
+button:hover {
+  transform: scale(1.1);
+}
+button svg,
+.input-wrapper button svg {
+  max-width: 1rem;
+  height: 1rem;
+  display: block;
+}
+button.btn-primary {
+  background-color: #4681f4;
+  color: #fff;
+}
+button.btn-success {
+  background-color: #4ef037;
+}
+.priority-high {
+  background-color: hsl(0, 71%, 52%);
+}
+.priority-medium {
+  background-color: hsl(28, 100%, 60%);
+}
+.priority-low {
+  background-color: hsl(85, 59%, 65%);
+}
+
+.badge {
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+  padding: 0.4rem 1rem;
+  display: inline-block;
+  border-radius: 0.5rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 1rem;
+  font-weight: regular;
+  line-height: 1;
+  color: #fff;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 250ms all ease-out;
+}
+.modal-open {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-open .modal-content {
+  transform: translateY(0);
+}
+.modal-content {
+  transform: translateY(-10%);
+  background-color: #fff;
+  width: 30em;
+  max-width: 80%;
+  padding: 2rem;
+  position: relative;
+  transition: 250ms all ease-out;
+  text-align: left;
+}
+.modal-content h2 {
+  text-align: center;
+}
+#close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+footer#main-footer {
+  background-color: #000;
+  padding-block: 0.3rem;
+  color: #fff;
+}
+header#main-header {
+  background-color: #000;
+  padding: 0.6rem 1.2rem;
+  color: #fff;
+  font-size: 0.9rem;
+}
+header#main-header p {
+  margin: 0;
+}
+.social {
+  display: flex;
+  gap: 1rem;
+}
