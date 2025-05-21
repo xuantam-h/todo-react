@@ -8,12 +8,16 @@ interface TodoState {
     priority: string;
     isCompleted: boolean;
   }[],
+}
+
+interface TodoActions {
   addTodo: (todoName: string, priority: string) => void;
   deleteTodo: (todoId: number) => void;
   clearTodo: () => void;
+  completeTodo: (todoId: number) => void;
 }
 
-const useTodoStore = create<TodoState>((set) => ({
+const useTodoStore = create<TodoState & TodoActions>((set) => ({
   toDo: [
     { id: 0, name: "Contacter Xuan-Tam", priority: "Haute", isCompleted: false },
     { id: 1, name: "Faire le ménage", priority: "Basse", isCompleted: false },
@@ -45,6 +49,14 @@ const useTodoStore = create<TodoState>((set) => ({
       toDo: state.toDo.filter((todoItem) => todoItem.id !== todoId),
     })),
   clearTodo: () => set(() => ({ toDo: [] })),
+  completeTodo: (todoId) =>
+    set((state) => ({
+      toDo: state.toDo.map((todo) =>
+        todo.id === todoId
+          ? { ...todo, isCompleted: true }
+          : todo
+      ),
+    })),
 }));
 
 export default useTodoStore;

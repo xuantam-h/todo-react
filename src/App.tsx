@@ -1,18 +1,12 @@
-import { useState, useEffect } from "react";
 import AddForm from "./components/AddForm";
 import ClearTask from "./components/ClearTask";
+import Collapse from "./components/Collapse";
 import Filter from "./components/Filter";
 import TaskList from "./components/TaskList";
 import Header from "./layouts/Header";
 import "./styles.css";
-import useTodoStore from "./store/useTodoStore";
-import { v4 as uuidv4 } from 'uuid';
 
 export default function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Retrieve list of To-do with Zustand store
-  const todoZustand = useTodoStore((state) => state.toDo);
 
   return (
     <div className="App">
@@ -24,7 +18,9 @@ export default function App() {
           <Filter />
           <ClearTask />
         </div>
-        <TaskList />
+        <Collapse title="À faire">
+          <TaskList />
+        </Collapse>
       </div>
     </div>
   );

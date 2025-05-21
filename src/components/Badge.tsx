@@ -1,9 +1,8 @@
 type BadgeProps = {
   name: string;
-  className: string;
 };
 
-const Badge = ({ name, className }: BadgeProps) => {
+const Badge = ({ name }: BadgeProps) => {
   const getPriorityClass = (priority: string) => {
     switch (priority) {
       case "Haute":

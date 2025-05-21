@@ -5,7 +5,7 @@ const Header = () => {
     <header id="main-header">
       <div className="container d-flex justify-content-between">
         <p>
-          Projet réalisé par Xuan-Tam H. <strong>(React + TS)</strong>
+          Projet réalisé par Xuan-Tam H. <strong>(React + TypeScript)</strong>
         </p>
         <Social />
       </div>

@@ -4,7 +4,9 @@ const Filter = () => {
   return (
     <>
       <Modal title="Filtrer" btnOpen="Filtrer">
-        lipsum 
+        <button>Basse</button>
+        <button>Moyenne</button>
+        <button>Haute</button>
       </Modal>
     </>
   );

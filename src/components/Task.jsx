@@ -2,21 +2,27 @@ import Badge from "../components/Badge";
 import useTodoStore from "../store/useTodoStore";
 
 const Task = ({ taskInfo }) => {
-  // Retrieve deleteTodo from Zustand store (useTodoStore)
+  // Retrieve deleteTodo action from Zustand store (useTodoStore)
   const deleteTodo = useTodoStore((state) => state.deleteTodo);
+
+  // Retrieve completeTodo action from Zustand store (useTodoStore)
+  const completeTodo = useTodoStore((state) => state.completeTodo);
+
+  // Retrieve editTodo action from Zustand store (useTodoStore)
+  const editTodo = useTodoStore((state) => state.editTodo);
   
   const handleEdit = () => {
     console.log(taskInfo.name + " " + taskInfo.id);
   }
 
   return (
-    <li className="todo-item" key={taskInfo.id}>
+    <li className={`todo-item ${taskInfo.isCompleted && 'priority-low'}`} key={taskInfo.id}>
       <div className="todo-info">
         <Badge name={taskInfo.priority} />
         {taskInfo.name}
       </div>
       <div className="todo-btn">
-        <button id="complete-btn" className="btn btn-success">
+        <button id="complete-btn" className="btn btn-success" onClick={() => completeTodo(taskInfo.id)}>
           <svg
             width="800px"
             height="800px"

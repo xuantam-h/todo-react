@@ -1,7 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Cal+Sans&family=Open+Sans&display=swap");
 
+:root {
+  /* Typography */
+  --main-font: "Open Sans", sans-serif;
+  --heading-font: "Cal Sans", sans-serif;
+
+  /* Padding & spacing */
+  --padding-medium: 1.2rem;
+
+  /* Colors */
+  --clr-white: #fff;
+}
+
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--main-font);
   background-color: hsl(57, 92%, 85%);
   margin: 0;
 }
@@ -11,7 +23,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Cal Sans", sans-serif;
+  font-family: var(--heading-font);
 }
 h1 {
   font-size: 3rem;
@@ -43,6 +55,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 .input-text,
 select {
@@ -55,6 +68,11 @@ select {
   margin-right: -1rem;
   font-family: "Cal Sans", sans-serif;
   box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+}
+
+/* Fixes arrow placement in option tags */
+select{
+  border-right: 1rem solid transparent;
 }
 input::placeholder {
   color: lightgray;
@@ -75,19 +93,20 @@ input::placeholder {
 .todo-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 .todo-item {
   font-family: "Cal Sans", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem;
-  border-bottom: 1px solid#faf99f;
+  padding: var(--padding-medium);
+  border-bottom: 1px solid #f5f5f5;
   text-align: left;
   transition: 250ms background ease-out;
 }
 .todo-item:hover {
-  background-color: hsl(57, 92%, 83%);
+  background-color: hsl(0deg 0% 97.79%);
 }
 .todo-info {
   display: flex;
@@ -200,4 +219,29 @@ header#main-header p {
 .social {
   display: flex;
   gap: 1rem;
+}
+.collapse{
+  background-color: var(--clr-white);
+}
+.collapse-title{
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-medium);
+  font-family: var(--heading-font);
+  border-bottom: 1px solid #f5f5f5;
+}
+.collapse-title svg{
+  transform: rotate(-90deg);
+  transition: 250ms all ease-out;
+}
+.collapse-content{
+  display: none;
+}
+.collapse-opened .collapse-content{
+  display: block;
+}
+.collapse-opened .collapse-title svg{
+  transform: rotate(0deg);
 }

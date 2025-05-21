@@ -1,6 +1,7 @@
 {
     "include": [
-        "./src/**/*"
+        "./src/**/*",
+        "./src/components", "./custom.d.ts"
     ],
     "compilerOptions": {
         "strict": false,
