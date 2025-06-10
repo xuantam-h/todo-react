@@ -15,6 +15,7 @@ interface TodoActions {
   deleteTodo: (todoId: number) => void;
   clearTodo: () => void;
   completeTodo: (todoId: number) => void;
+  filterTodo: (priority: string) => void;
 }
 
 const useTodoStore = create<TodoState & TodoActions>((set) => ({
@@ -49,6 +50,14 @@ const useTodoStore = create<TodoState & TodoActions>((set) => ({
         toDo: state.toDo.map((todo) =>
           todo.id === todoId
             ? { ...todo, name: newName }
+            : todo
+        ),
+    })),
+  filterTodo: (priority) =>
+      set((state) => ({
+        toDo: state.toDo.map((todo) =>
+          todo.priority === priority
+            ? { ...todo }
             : todo
         ),
     })),

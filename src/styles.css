@@ -239,10 +239,12 @@ header#main-header p {
   transition: 250ms all ease-out;
 }
 .collapse-content{
-  display: none;
+  height: 0px;
+  overflow: hidden;
+  transition: height ease 300ms;
 }
 .collapse-opened .collapse-content{
-  display: block;
+  height: 300px;
 }
 .collapse-opened .collapse-title svg{
   transform: rotate(0deg);

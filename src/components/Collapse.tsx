@@ -6,7 +6,7 @@ interface CollapseProps extends React.PropsWithChildren {
 }
 
 const Collapse = ({ title, children }: CollapseProps) => {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
   const collapseHeightRef = useRef<HTMLDivElement>(null);
 
   const handleCollapse = () => {
@@ -23,12 +23,16 @@ const Collapse = ({ title, children }: CollapseProps) => {
           </svg>
         </button>
       </div>
-      <div className="collapse-content" ref={collapseHeightRef} style={{ maxHeight: isOpen
-      ? `${collapseHeightRef.current?.scrollHeight}px`
-      : '0px'
-  }}>
-        {children}
-      </div>
+        <div 
+        className="collapse-content"
+        ref={collapseHeightRef} 
+        style={isOpen ? {
+          height: collapseHeightRef.current.scrollHeight + "px",
+        } : {
+          height: "0px",
+        }}>
+          {children}
+        </div>
     </div>
   );
 };
