@@ -2,11 +2,12 @@ import { useState, useRef } from "react";
 
 interface CollapseProps extends React.PropsWithChildren {
   title: string;
+  style?: React.CSSProperties;
 }
 
 const Collapse = ({ title, children }: CollapseProps) => {
-  const [isOpen, setOpen] = useState(false);
-  const collapseHeightRef = useRef();
+  const [isOpen, setOpen] = useState(true);
+  const collapseHeightRef = useRef<HTMLDivElement>(null);
 
   const handleCollapse = () => {
     setOpen(prev => !prev);
@@ -22,7 +23,10 @@ const Collapse = ({ title, children }: CollapseProps) => {
           </svg>
         </button>
       </div>
-      <div className="collapse-content" ref={collapseHeightRef}>
+      <div className="collapse-content" ref={collapseHeightRef} style={{ maxHeight: isOpen
+      ? `${collapseHeightRef.current?.scrollHeight}px`
+      : '0px'
+  }}>
         {children}
       </div>
     </div>

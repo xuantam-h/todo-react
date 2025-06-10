@@ -6,6 +6,7 @@ import useTodoStore from "../store/useTodoStore";
 const AddForm = () => {
   const [title, setTitle] = useState("");
   const [selectedPriority, setSelectedPriority] = useState("Basse");
+  const [error, setError] = useState("");
 
   // Retrieve addTodo from Zustand store (useTodoStore)
   const addTodo = useTodoStore((state) => state.addTodo);
@@ -33,6 +34,7 @@ const AddForm = () => {
         title="Ajouter une tâche"
         btnClass="btn-primary"
         btnOpen="Ajouter une tâche"
+        showModal={true}
       >
         <Input
           id="input-name"
@@ -54,30 +56,32 @@ const AddForm = () => {
             <option value="Haute">Haute</option>
           </select>
         </div>
-        <button
-          onClick={() => {
-            checkFields();
-            clearFields();
-          }}
-          className="d-flex btn-primary"
-        >
-          <svg
-            width="800px"
-            height="800px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="modal-cta d-flex justify-content-center gap-1">
+          <button
+            onClick={() => {
+              checkFields();
+              clearFields();
+            }}
+            className="d-flex btn-primary"
           >
-            <path
-              d="M7 12L12 12M12 12L17 12M12 12V7M12 12L12 17"
-              stroke="#fff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Ajouter
-        </button>
+            <svg
+              width="800px"
+              height="800px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 12L12 12M12 12L17 12M12 12V7M12 12L12 17"
+                stroke="#fff"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Ajouter
+          </button>
+        </div>
       </Modal>
     </>
   );

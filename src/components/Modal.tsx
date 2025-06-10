@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Modal = ({ title, btnOpen, btnClass = "btn", children }) => {
+const Modal = ({ title, btnOpen, btnClass = "btn", showModal, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

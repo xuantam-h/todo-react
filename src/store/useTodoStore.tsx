@@ -44,9 +44,13 @@ const useTodoStore = create<TodoState & TodoActions>((set) => ({
     set((state) => ({
       toDo: state.toDo.filter((todoItem) => todoItem.id !== todoId),
     })),
-  editTodo: (todoId) =>
+  editTodo: (todoId, newName) =>
       set((state) => ({
-      toDo: state.toDo.filter((todoItem) => todoItem.id !== todoId),
+        toDo: state.toDo.map((todo) =>
+          todo.id === todoId
+            ? { ...todo, name: newName }
+            : todo
+        ),
     })),
   clearTodo: () => set(() => ({ toDo: [] })),
   completeTodo: (todoId) =>

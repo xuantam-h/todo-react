@@ -1,7 +1,12 @@
+import { useState } from "react";
 import Badge from "../components/Badge";
 import useTodoStore from "../store/useTodoStore";
+import Modal from "../components/Modal";
 
 const Task = ({ taskInfo }) => {
+  const [isEdit, setIsEdit] = useState(false);
+  const [title, setTitle] = useState("");
+
   // Retrieve deleteTodo action from Zustand store (useTodoStore)
   const deleteTodo = useTodoStore((state) => state.deleteTodo);
 
@@ -12,14 +17,31 @@ const Task = ({ taskInfo }) => {
   const editTodo = useTodoStore((state) => state.editTodo);
   
   const handleEdit = () => {
-    console.log(taskInfo.name + " " + taskInfo.id);
+    setIsEdit(prev => !prev);
+  }
+
+  const saveEdit = () => {
+    editTodo(taskInfo.id, title);
+    setIsEdit(false);
   }
 
   return (
-    <li className={`todo-item ${taskInfo.isCompleted && 'priority-low'}`} key={taskInfo.id}>
+    <>
+      <li className={`todo-item ${taskInfo.isCompleted && 'priority-low'}`} key={taskInfo.id}>
       <div className="todo-info">
         <Badge name={taskInfo.priority} />
-        {taskInfo.name}
+        <div className="todo-field">
+          {isEdit ?
+            <div className="todo-name-field">
+              <input type="text" placeholder={taskInfo.title} onChange={(e) => setTitle(e.target.value)}/>
+              <button onClick={saveEdit}>Save</button>
+            </div> : 
+            <div className="todo-name">
+              {taskInfo.name}
+            </div>
+          }
+ 
+        </div>
       </div>
       <div className="todo-btn">
         <button id="complete-btn" className="btn btn-success" onClick={() => completeTodo(taskInfo.id)}>
@@ -74,6 +96,7 @@ const Task = ({ taskInfo }) => {
         </button>
       </div>
     </li>
+    </>
   );
 };
 
