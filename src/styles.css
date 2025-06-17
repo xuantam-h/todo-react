@@ -148,7 +148,7 @@ button.btn-success {
   background-color: hsl(28, 100%, 60%);
 }
 .priority-low {
-  background-color: hsl(85, 59%, 65%);
+  background-color: hsl(85deg 90.2% 85.44%);
 }
 
 .badge {
@@ -241,10 +241,7 @@ header#main-header p {
 .collapse-content{
   height: 0px;
   overflow: hidden;
-  transition: height ease 300ms;
-}
-.collapse-opened .collapse-content{
-  height: 300px;
+  transition: height ease-out 350ms;
 }
 .collapse-opened .collapse-title svg{
   transform: rotate(0deg);

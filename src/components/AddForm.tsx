@@ -34,7 +34,6 @@ const AddForm = () => {
         title="Ajouter une tâche"
         btnClass="btn-primary"
         btnOpen="Ajouter une tâche"
-        showModal={true}
       >
         <Input
           id="input-name"

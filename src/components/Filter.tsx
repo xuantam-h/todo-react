@@ -5,20 +5,20 @@ const Filter = () => {
   // Retrieve list of To-do with Zustand store
   const todoZustand = useTodoStore((state) => state.toDo);
 
-  const handleFilter = () => {
-    const filteredTodo = todoZustand.filter(todo => todo.priority === "Moyenne");
-    console.log(filteredTodo);
-    
-    
+  // Retrieve filter action with Zustand store
+  const filterTodo = useTodoStore((state) => state.filterTodo);
+
+  const handleFilter = (priority) => {
+    filterTodo(priority);
   }
 
   return (
     <>
-      <Modal title="Filtrer" btnOpen="Filtrer" showModal={true}>
+      <Modal title="Filtrer" btnOpen="Filtrer">
         <div className="modal-cta d-flex justify-content-center gap-1">
-          <button onClick={handleFilter}>Basse</button>
-          <button onClick={handleFilter}>Moyenne</button>
-          <button onClick={handleFilter}>Haute</button>
+          <button onClick={() => handleFilter("Basse")}>Basse</button>
+          <button onClick={() => handleFilter("Moyenne")}>Moyenne</button>
+          <button onClick={() => handleFilter("Haute")}>Haute</button>
         </div>
       </Modal>
     </>

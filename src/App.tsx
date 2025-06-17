@@ -18,9 +18,7 @@ export default function App() {
           <Filter />
           <ClearTask />
         </div>
-        <Collapse title="À faire">
-          <TaskList />
-        </Collapse>
+        <TaskList />
       </div>
     </div>
   );
